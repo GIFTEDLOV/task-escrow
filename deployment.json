@@ -1,0 +1,35 @@
+{
+  "contract": "TaskEscrow",
+  "source": "contracts/task_escrow.py",
+  "address": "0xDe77A32bBCdACFEb50D15660BF1bAA5B69010B0f",
+  "explorerUrl": "https://explorer-bradbury.genlayer.com/address/0xDe77A32bBCdACFEb50D15660BF1bAA5B69010B0f",
+  "treasury": "0x4f7a14c8cd83caa18Fafc35aA91a8483Cc95E3E5",
+  "chain": {
+    "name": "GenLayer Bradbury Testnet",
+    "id": 4221,
+    "idHex": "0x107d",
+    "rpc": "https://rpc-bradbury.genlayer.com",
+    "explorer": "https://explorer-bradbury.genlayer.com/",
+    "nativeCurrency": { "name": "GEN Token", "symbol": "GEN", "decimals": 18 }
+  },
+  "deployTx": null,
+  "deployTxNote": "Not recorded at deploy time and not recoverable afterwards: no deploy artifact was written, and the Bradbury explorer exposes no public API for contract-creation lookup. Record this field on the next deployment.",
+  "consumedBy": [
+    "frontend/src/lib/clients.ts (CONTRACT_ADDRESS — the frontend reads the address from there, not from this file)",
+    "README.md (title block and explorer link)"
+  ],
+  "superseded": [
+    {
+      "address": "0x124F5fdB0a329963E2F3fAd80D10CAb64D9aE88d",
+      "status": "superseded — do not use",
+      "note": "An earlier TaskEscrow deployment, still live on Bradbury with its own separate task state and the same treasury. It survives only in stale frontend/.next build output and in pre-2026-07-09 notes. It is NOT the contract the deployed app calls."
+    }
+  ],
+  "verifiedOn": "2026-07-09",
+  "verification": [
+    "frontend/src/lib/clients.ts commits this address at HEAD, with no local modification.",
+    "All 12 JS chunks served by the live Vercel deployment were fetched; this address appears in chunk 3z1lecdmcv0m1.js and the superseded address appears zero times.",
+    "eth_getCode cannot distinguish the two addresses — both return byte-identical proxy bytecode. Distinguishing them requires calling the contract views.",
+    "get_task(3) on this address returns the RESOLVED lullaby dispute whose verdict text matches the quote in README.md and the screenshot in readme-assets/profile-verdict.jpg verbatim. The superseded address holds a different lullaby task with different verdict reasoning."
+  ]
+}
